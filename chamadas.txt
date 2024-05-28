@@ -1,0 +1,48 @@
+estacionamentos/listarUnico
+estacionamentos/vagas
+
+{
+    "estacionamento":1
+}
+
+=================================
+estacionamentos/inserir
+
+{
+    "desc":"teste ",
+    "cap":1000
+}
+
+=================================
+estacionamentos/atualizar
+
+{
+    "estacionamento":2,
+    "desc":"teste 100",
+    "cap":500
+}
+
+====================================
+movimentacoes/darEntrada
+
+{
+    "placa":"AAABB",
+    "estacionamento":1
+}
+
+=====================================
+movimentacoes/darSaida
+
+
+{
+    "movimentacao":1
+}
+
+=====================================
+movimentacoes/listarMovimentacoes
+movimentacoes/listarGeral
+
+{
+    "entrada":"27/05/2024"
+}
+
