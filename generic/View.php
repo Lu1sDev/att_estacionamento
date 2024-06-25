@@ -9,9 +9,9 @@ class View {
     }
 
     public function conteudo($caminho,$param = array()){
-        echo $this->cabecalho();
+        //echo $this->cabecalho();
         include $caminho;
-        echo $this->rodape();
+        //echo $this->rodape();
     }
 }
 ?>

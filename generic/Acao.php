@@ -54,7 +54,7 @@ class Acao
 
             if ($param) {
                 $return = $this->invocarMetodos($reflectM, $obj, $param);
-                header("Content-Type: application/json");
+                //header("Content-Type: application/json");
                 $r = new Retorno();
                 $r->retorno = $return;
                 echo json_encode($r);
