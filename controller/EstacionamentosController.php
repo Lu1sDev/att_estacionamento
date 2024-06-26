@@ -1,27 +1,43 @@
 <?php
+
 namespace controller;
 
 use service\EstacionamentosService;
 use view\EstacionamentosView;
 
-class EstacionamentosController{
+class EstacionamentosController
+{
 
-    public function listar(){
+    public function listar()
+    {
         $viewEstacionamento = new EstacionamentosView();
         $serviceEstacionamento = new EstacionamentosService();
         $list = $serviceEstacionamento->listar();
         $viewEstacionamento->listarEstacionamento($list);
     }
 
-    public function inserir(){
+    public function inserir()
+    {
         $viewEstacionamento = new EstacionamentosView();
         $viewEstacionamento->inserirEstacionamento();
     }
 
 
-    public function vagas(){
+    public function vagas()
+    {
         $viewEstacionamento = new EstacionamentosView();
         $viewEstacionamento->vagasEstacionamento();
     }
+
+    public function atualizar()
+    {
+        $viewEstacionamento = new EstacionamentosView();
+        $viewEstacionamento->atualizarEstacionamento();
+    }
+
+    public function excluir()
+    {
+        $viewEstacionamento = new EstacionamentosView();
+        $viewEstacionamento->excluirEstacionamento();
+    }
 }
-?>

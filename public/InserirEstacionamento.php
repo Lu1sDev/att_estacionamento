@@ -54,7 +54,7 @@
 
         button {
             padding: 10px 20px;
-            background: #28a745;
+            background: #425867;
             color: #fff;
             border: none;
             border-radius: 4px;
@@ -63,14 +63,18 @@
         }
 
         button:hover {
-            background: #218838;
+            background: #10161a;
+        }
+
+        body {
+            background-color: lightcyan;
         }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <h2 style="text-align: center;">CADASTRO</h2>
+        <h2 style="text-align: center;">INSERIR</h2>
         <table>
             <tr>
                 <td style="text-align: right">
@@ -93,7 +97,7 @@
                 </td>
             </tr>
             <tr>
-                <td collspan="2">
+                <td >
                     <button @click="enviar">Enviar</button>
                 </td>
             </tr>

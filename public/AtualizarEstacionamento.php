@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>VAGAS</title>
+    <title>CADASTRAR</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <style>
         body {
@@ -52,6 +52,7 @@
             border-radius: 4px;
         }
 
+
         button {
             padding: 10px 20px;
             background: #425867;
@@ -66,14 +67,6 @@
             background: #10161a;
         }
 
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background: #e9ecef;
-            border-radius: 4px;
-            text-align: center;
-        }
-
         body {
             background-color: lightcyan;
         }
@@ -82,7 +75,7 @@
 
 <body>
     <div id="app">
-        <h2 style="text-align: center;">VAGAS</h2>
+        <h2 style="text-align: center;">ATUALIZAR</h2>
         <table>
             <tr>
                 <td style="text-align: right">
@@ -95,31 +88,50 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: center;">
-                    <button @click="enviar">Buscar</button>
+                <td style="text-align: right">
+                    NOME:
+                </td>
+                <td>
+                    <label for="nome">
+                        <input type="text" v-model="nome" id="nome">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">
+                    CAPACIDADE:
+                </td>
+                <td>
+                    <label for="capacidade">
+                        <input type="text" v-model="capacidade" id="capacidade">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button @click="enviar">Enviar</button>
                 </td>
             </tr>
         </table>
-        <div v-if="resultado !== null" class="result">
-            <h3>Vagas Disponíveis</h3>
-            <p>{{ resultado }}</p>
-        </div>
     </div>
 
     <script>
         new Vue({
             el: '#app',
             data: {
-                estacionamento: '',
-                resultado: null,
+                nome: '',
+                capacidade: '',
+                estacionamento: ''
             },
             methods: {
                 enviar() {
                     let dados = {
-                        estacionamento: this.estacionamento
+                        estacionamento: this.estacionamento,
+                        desc: this.nome,
+                        cap: this.capacidade
                     };
 
-                    const url = 'http://localhost/mvc20241/estacionamentos/vagas';
+                    const url = 'http://localhost/mvc20241/estacionamentos/atualizar';
 
                     const options = {
                         method: 'POST',
@@ -131,17 +143,14 @@
 
                     fetch(url, options)
                         .then(response => {
-                            console.log('Resposta bruta:', response);
                             if (!response.ok) {
                                 throw new Error('Erro na requisição: ' + response.statusText);
                             }
-                            return response.text().then(text => {
-                                return text ? JSON.parse(text) : {};
-                            });
+                            return response.text();
                         })
                         .then(data => {
-                            console.log('Dados recebidos:', data);
-                            this.resultado = data.retorno[0].vagas;
+                            console.log(data);
+                            window.location.href = "/mvc20241/estacionamentos/listar";
                         })
                         .catch(error => {
                             console.error('Erro:', error);

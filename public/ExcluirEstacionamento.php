@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>VAGAS</title>
+    <title>CADASTRAR</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <style>
         body {
@@ -66,14 +66,6 @@
             background: #10161a;
         }
 
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background: #e9ecef;
-            border-radius: 4px;
-            text-align: center;
-        }
-
         body {
             background-color: lightcyan;
         }
@@ -82,7 +74,7 @@
 
 <body>
     <div id="app">
-        <h2 style="text-align: center;">VAGAS</h2>
+        <h2 style="text-align: center;">EXCLUIR</h2>
         <table>
             <tr>
                 <td style="text-align: right">
@@ -95,31 +87,26 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: center;">
-                    <button @click="enviar">Buscar</button>
+                <td>
+                    <button @click="enviar">Enviar</button>
                 </td>
             </tr>
         </table>
-        <div v-if="resultado !== null" class="result">
-            <h3>Vagas Disponíveis</h3>
-            <p>{{ resultado }}</p>
-        </div>
     </div>
 
     <script>
         new Vue({
             el: '#app',
             data: {
-                estacionamento: '',
-                resultado: null,
+                estacionamento: ''
             },
             methods: {
                 enviar() {
                     let dados = {
-                        estacionamento: this.estacionamento
+                        estacionamento: this.estacionamento,
                     };
 
-                    const url = 'http://localhost/mvc20241/estacionamentos/vagas';
+                    const url = 'http://localhost/mvc20241/estacionamentos/excluir';
 
                     const options = {
                         method: 'POST',
@@ -131,17 +118,14 @@
 
                     fetch(url, options)
                         .then(response => {
-                            console.log('Resposta bruta:', response);
                             if (!response.ok) {
                                 throw new Error('Erro na requisição: ' + response.statusText);
                             }
-                            return response.text().then(text => {
-                                return text ? JSON.parse(text) : {};
-                            });
+                            return response.text();
                         })
                         .then(data => {
-                            console.log('Dados recebidos:', data);
-                            this.resultado = data.retorno[0].vagas;
+                            console.log(data);
+                            window.location.href = "/mvc20241/estacionamentos/listar";
                         })
                         .catch(error => {
                             console.error('Erro:', error);

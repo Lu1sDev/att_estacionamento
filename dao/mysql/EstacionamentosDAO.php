@@ -31,6 +31,8 @@ class EstacionamentosDAO extends MysqlFactory implements IEstacionamentosDAO{
 
     public function inserir($desc= "null", $cap = 0){
         try {
+            echo "To batendo aqui? (insert)";
+
         $sql = "INSERT INTO estacionamentos  (descricao, capacidade) VALUES (:DESCRICAO , :CAPACIDADE)";
         $resultado = $this->banco->executar($sql,['DESCRICAO'=>$desc,'CAPACIDADE'=>$cap]);
 
@@ -43,6 +45,7 @@ class EstacionamentosDAO extends MysqlFactory implements IEstacionamentosDAO{
 
     public function atualizar($desc , $cap , $estacionamento){
 
+        echo "To batendo aqui?";
         $sql = "UPDATE ESTACIONAMENTOS  
                     SET DESCRICAO = :DESCRICAO, 
                         CAPACIDADE = :CAPACIDADE 

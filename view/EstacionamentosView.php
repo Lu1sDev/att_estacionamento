@@ -23,4 +23,14 @@ class EstacionamentosView extends View
     {
         $this->conteudo("public/VagasEstacionamento.php");
     }
+
+    public function atualizarEstacionamento()
+    {
+        $this->conteudo("public/AtualizarEstacionamento.php");
+    }
+
+    public function excluirEstacionamento()
+    {
+        $this->conteudo("public/ExcluirEstacionamento.php");
+    }
 }
