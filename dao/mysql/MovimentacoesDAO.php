@@ -34,7 +34,7 @@ class MovimentacoesDAO extends MysqlFactory implements IMovimentacoesDAO
 
     public function listarMovimentacoes($entrada){
         try {
-            $sql = "select E.DESCRICAO ESTACIONAMENTO ,M.PLACA,DATE_FORMAT(m.DT_ENTRADA, '%d/%m/%Y %H:%i:%s') entrada,DATE_FORMAT(m.DT_SAIDA, '%d/%m/%Y %H:%i:%s') saida
+            $sql = "select M.MOVIMENTACAO, E.DESCRICAO ESTACIONAMENTO ,M.PLACA,DATE_FORMAT(m.DT_ENTRADA, '%d/%m/%Y %H:%i:%s') ENTRADA ,DATE_FORMAT(m.DT_SAIDA, '%d/%m/%Y %H:%i:%s') SAIDA
                         from movimentacoes M
                             join estacionamentos E on E.ESTACIONAMENTO = M.ESTACIONAMENTO 
                         WHERE DATE_FORMAT(m.DT_ENTRADA, '%d/%m/%Y')  = :entradada
@@ -48,10 +48,10 @@ class MovimentacoesDAO extends MysqlFactory implements IMovimentacoesDAO
     
     public function listarGeral(){
         try {
-            $sql = "select E.DESCRICAO ESTACIONAMENTO ,M.PLACA,DATE_FORMAT(m.DT_ENTRADA, '%d/%m/%Y %H:%i:%s') entrada,DATE_FORMAT(m.DT_SAIDA, '%d/%m/%Y %H:%i:%s') saida
+            $sql = "select M.MOVIMENTACAO, E.DESCRICAO ESTACIONAMENTO ,M.PLACA,DATE_FORMAT(m.DT_ENTRADA, '%d/%m/%Y %H:%i:%s') ENTRADA ,DATE_FORMAT(m.DT_SAIDA, '%d/%m/%Y %H:%i:%s') SAIDA
                         from movimentacoes M
                             join estacionamentos E on E.ESTACIONAMENTO = M.ESTACIONAMENTO 
-                        ORDER BY E.ESTACIONAMENTO ";
+                        ORDER BY E.ESTACIONAMENTO, M.MOVIMENTACAO ";
             $resultado = $this->banco->executar($sql);
             return $resultado;
         } catch (\Throwable $th) {

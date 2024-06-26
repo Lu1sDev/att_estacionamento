@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>EXCLUIR</title>
+    <title>DAR SAIDA</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <style>
         body {
@@ -74,15 +74,15 @@
 
 <body>
     <div id="app">
-        <h2 style="text-align: center;">EXCLUIR</h2>
+        <h2 style="text-align: center;">DAR SAIDA</h2>
         <table>
             <tr>
                 <td style="text-align: right">
-                    ESTACIONAMENTO:
+                MOVIMENTACAO:
                 </td>
                 <td>
-                    <label for="estacionamento">
-                        <input type="text" v-model="estacionamento" id="estacionamento">
+                    <label for="movimentacao">
+                        <input type="text" v-model="movimentacao" id="movimentacao">
                     </label>
                 </td>
             </tr>
@@ -98,15 +98,16 @@
         new Vue({
             el: '#app',
             data: {
-                estacionamento: ''
+                movimentacao: ''
+                
             },
             methods: {
                 enviar() {
                     let dados = {
-                        estacionamento: this.estacionamento,
+                        movimentacao: this.movimentacao,
                     };
 
-                    const url = 'http://localhost/mvc20241/estacionamentos/excluir';
+                    const url = 'http://localhost/mvc20241/movimentacoes/darSaida';
 
                     const options = {
                         method: 'POST',
@@ -125,7 +126,7 @@
                         })
                         .then(data => {
                             console.log(data);
-                            window.location.href = "/mvc20241/estacionamentos/listar";
+                            window.location.href = "/mvc20241/movimentacoes/buscaListarGeral";
                         })
                         .catch(error => {
                             console.error('Erro:', error);

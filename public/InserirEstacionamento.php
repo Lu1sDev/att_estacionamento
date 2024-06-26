@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CADASTRAR</title>
+    <title>INSERIR</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <style>
         body {

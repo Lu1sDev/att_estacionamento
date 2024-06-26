@@ -57,7 +57,11 @@ class Acao
                 //header("Content-Type: application/json");
                 $r = new Retorno();
                 $r->retorno = $return;
-                echo json_encode($r);
+                if($r->retorno !== null)
+                {
+                    echo json_encode($r);
+                }
+               
             }
         } catch (Exception $e) {
             http_response_code(500);
